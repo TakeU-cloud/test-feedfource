@@ -72,41 +72,59 @@
   }
 {%- endstyle -%}
 
-<div class="page-width page-width--narrow section-{{ section.id }}-padding">
-  <h1 class="main-page-title page-title h0">
-    {{ page.title | escape }}
-  </h1>
-  <div class="rte">
-    {{ page.content }}
+<div class="page-width section-{{ section.id }}-padding section-{{ section.id }}">
+  {% if section.settings.stores_title %}
+    <h1 class="main-page-title page-title stores-title">
+      {{ section.settings.stores_title | escape }}
+    </h1>
+  {% endif %}
+
+  <!-- 1つの店舗を表現する要素を追加 -->
+  <div class="stores-grid">
+
+    <!-- 複数のblockで店舗情報を表現するためのイテレーション -->
+    {%- for block in section.blocks -%}
+      <div class="store-block">
+        <article clss="store">
+          <div class="store-header">
+            <!-- block要素のstore_linkが存在している場合のみ -->
+            {% if block.settings.store_link %}
+              <a href="{{ block.settings.store_link }}" class="full-unstyled-link">
+            {% endif %}
+              <!-- block要素のstore_imageが存在している場合のみ -->
+              {% if block.settings.store_image %}
+                <figure class="store-thumbnail">
+                  <img
+                    class="store-image"
+                    src="{{ block.settings.store_image | image_url }}"
+                    alt="{{ block.settings.store_image.alt }}"
+                    width="720"
+                    height="auto"
+                    loading="lazy"
+                  >
+                </figure>
+              {% endif %}
+              <!-- block要素のtitleが存在している場合のみ -->
+              {% if block.settings.title %}
+                <h3 class="store-title">{{ block.settings.title }}</h3>
+              {% endif %}
+            {% if block.settings.store_link %}
+              </a>
+            {% endif %}
+          </div>
+          <div class="store-body">
+            <!-- block要素のstore_addressが存在している場合のみ -->
+            {% if block.settings.store_address %}
+              <p class="store-text">{{ block.settings.store_address }}</p>
+            {% endif %}
+          </div>
+        </article>
+      </div>
+    {%- endfor -%}
+  <!-- 1つの店舗を表現する要素を追加 ここまで -->
   </div>
 </div>
 
-<!-- 1つの店舗を表現する要素を追加 -->
-<div class="stores-grid">
-  <div class="store-block">
-    <article clss="store">
-      <div class="store-header">
-        <a href="(店舗ページのURL)" class="full-unstyled-link">
-          <figure class="store-thumbnail">
-            <img
-              class="store-image"
-              src=""
-              alt=""
-              width="720"
-              height="auto"
-              loading="lazy"
-            >
-          </figure>
-          <h3 class="store-title">（店舗名）</h3>
-        </a>
-      </div>
-      <div class="store-body">
-        <p class="store-text">（店舗の住所）</p>
-      </div>
-    </article>
-  </div>
-  <!-- 1つの店舗を表現する要素を追加 ここまで -->
-</div>
 
 {% schema %}
 {
