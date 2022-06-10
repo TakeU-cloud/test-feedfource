@@ -28,6 +28,8 @@
       ],
       "settings": {
         "stores_title": "Stores",
+        "grid_num_rule_pc": "2",
+        "grid_num_rule_sp": "2",
         "padding_top": 28,
         "padding_bottom": 28
       }

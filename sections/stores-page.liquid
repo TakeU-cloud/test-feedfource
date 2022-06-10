@@ -23,7 +23,7 @@
   .section-{{ section.id }} .stores-grid {
     display: grid;
     gap: 15px;
-    grid-template-columns: repeat(2, 1fr); /* 横2列で表示 */
+    grid-template-columns: repeat({{ section.settings.grid_num_rule_sp }}, 1fr); /* 横2列で表示 */
     justify-content: center;
   }
 
@@ -66,7 +66,7 @@
     .section-{{ section.id }} .stores-grid {
       display: grid;
       gap: 15px;
-      grid-template-columns: repeat(2, 1fr); /* 横2列で表示 */
+      grid-template-columns: repeat({{ section.settings.grid_num_rule_pc }}, 1fr); /* 横2列で表示 */
       justify-content: center;
     }
   }
@@ -170,6 +170,46 @@
       "id": "stores_title",
       "default": "Stores",
       "label": "店舗一覧タイトル"
+    },
+    {
+      "type": "select",
+      "id": "grid_num_rule_pc",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        }
+      ],
+      "default": "2",
+      "label": "横に並べる店舗数（PC）"
+    },
+    {
+      "type": "select",
+      "id": "grid_num_rule_sp",
+      "options": [
+      {
+        "value": "3",
+        "label": "3"
+      },
+      {
+        "value": "2",
+        "label": "2"
+      },
+      {
+        "value": "1",
+        "label": "1"
+      }
+    ],
+      "default": "1",
+      "label": "横に並べる店舗数（sp）"
     },
     {
       "type": "header",
