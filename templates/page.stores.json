@@ -2,7 +2,32 @@
   "sections": {
     "main": {
       "type": "stores-page",
+      "blocks": {
+        "3f3c53cb-bf8d-4bd4-b801-dbd316789b8c": {
+          "type": "store_info",
+          "settings": {
+            "store_image": "shopify:\/\/shop_images\/007.jpg",
+            "title": "おにぎり屋",
+            "store_address": "神戸市須磨区潮見台町",
+            "store_link": "https:\/\/kotetsu-japan.co.jp"
+          }
+        },
+        "5def5e27-3112-420f-8719-5a6f022976e6": {
+          "type": "store_info",
+          "settings": {
+            "store_image": "shopify:\/\/shop_images\/145.jpg",
+            "title": "卵かけご飯屋",
+            "store_address": "神戸市中央区磯部通り",
+            "store_link": "https:\/\/kotetsu-japan.co.jp"
+          }
+        }
+      },
+      "block_order": [
+        "3f3c53cb-bf8d-4bd4-b801-dbd316789b8c",
+        "5def5e27-3112-420f-8719-5a6f022976e6"
+      ],
       "settings": {
+        "stores_title": "Stores",
         "padding_top": 28,
         "padding_bottom": 28
       }
